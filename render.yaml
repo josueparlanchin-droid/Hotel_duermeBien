@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: duerme-bien
+    env: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: ./data/duerme-bien.db
+      - key: HOTEL_CIUDAD
+        value: Viña del Mar
